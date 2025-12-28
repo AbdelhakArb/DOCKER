@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "MyWebShop/1.0.0": {
+        "dependencies": {
+          "Kveer.XmlRPC": "1.3.1"
+        },
+        "runtime": {
+          "MyWebShop.dll": {}
+        }
+      },
+      "Kveer.XmlRPC/1.3.1": {
+        "runtime": {
+          "lib/netstandard2.0/Kveer.XmlRPC.dll": {
+            "assemblyVersion": "1.3.1.0",
+            "fileVersion": "1.3.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyWebShop/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Kveer.XmlRPC/1.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cx6pB87FAyLTXCcpwTSq1KHMYYW66BbG3xvIQRS+5KrAZlmzcflIU1sEqUalph+vpFvh2nupGzbgMWLmcvJN2w==",
+      "path": "kveer.xmlrpc/1.3.1",
+      "hashPath": "kveer.xmlrpc.1.3.1.nupkg.sha512"
+    }
+  }
+}
