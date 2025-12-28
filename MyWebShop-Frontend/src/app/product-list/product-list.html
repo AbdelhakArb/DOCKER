@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Catalogue Produits Odoo</h3>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>ID</th>
+            <th>Désignation</th>
+            <th class="text-end">Prix Unitaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of products(); track p.id) {
+            <tr>
+              <td><span class="badge bg-secondary">{{ p.id }}</span></td>
+              <td><strong>{{ p.name }}</strong></td>
+              <td class="text-end text-success fw-bold">{{ p.price }} €</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      @if (products().length === 0) {
+        <div class="text-center p-4">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-2">Synchronisation avec Odoo en cours...</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>
