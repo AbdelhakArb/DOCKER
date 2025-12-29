@@ -1,58 +1,28 @@
-using Microsoft.AspNetCore.Mvc;
-using CookComputing.XmlRpc;
-using MyWebShop.Models;
+using Microsoft.AspNetCore.Mvc; // C'est celui-ci qui contient ControllerBase
+using CookComputing.XmlRpc;      // Pour Odoo
+using MyWebShop.Models;// Remplace par le nom de ton dossier Models
+using MyWebShop.Services;
+using System.Collections.Generic;
 
-namespace MyWebShop.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    private readonly IOdooService _odooService;
+
+    // Le contrôleur demande une interface, il ne sait pas comment Odoo fonctionne
+    public ProductsController(IOdooService odooService)
     {
-        private readonly string _url = "http://localhost:8069/xmlrpc/2/";
-        private readonly string _db = "dbWebShop";
-        private readonly string _user = "testEmail@hotmail.com";
-        private readonly string _pass = "testMdp"; // Idéalement une clé API Odoo
-
-        [HttpGet]
-        public IActionResult GetProducts()
-        {
-            try
-            {
-                // 1. Connexion au point d'entrée "common" pour s'authentifier
-                var commonProxy = XmlRpcProxyGen.Create<IOdooProxy>();
-                commonProxy.Url = _url + "common";
-                int uid = commonProxy.Authenticate(_db, _user, _pass, new object[] { });
-
-                // 2. Connexion au point d'entrée "object" pour lire les données
-                var objectProxy = XmlRpcProxyGen.Create<IOdooProxy>();
-                objectProxy.Url = _url + "object";
-
-                // 3. Paramètres pour chercher les produits (on demande l'ID, le Nom et le Prix)
-                var fields = new string[] { "id", "name", "list_price" };
-                var filter = new object[] { }; // On prend tout
-                
-                var options = new XmlRpcStruct { { "fields", fields } };
-
-                var results = (object[])objectProxy.ExecuteKw(_db, uid, _pass, 
-                    "product.template", "search_read", new object[] { filter }, options);
-
-                // 4. On transforme le résultat d'Odoo en une liste C# propre
-                var products = results.Select(r => {
-                    var dict = (XmlRpcStruct)r;
-                    return new Product {
-                        Id = (int)dict["id"],
-                        Name = (string)dict["name"],
-                        Price = Convert.ToDouble(dict["list_price"])
-                    };
-                });
-
-                return Ok(products);
-            }
-            catch (System.Exception ex)
-            {
-                return Unauthorized("L'authentification Odoo a échoué. Vérifiez vos identifiants.");
-            }
-            
-        }
+        _odooService = odooService;
     }
+
+    [HttpGet]
+    public IActionResult Get() => Ok(_odooService.GetProducts());
+
+    [HttpPost]
+public IActionResult Post([FromBody] Product product) // On l'appelle 'product'
+{
+    var id = _odooService.CreateProduct(product); // On utilise 'product'
+    return Ok(new { id = id, message = "Produit créé !" });
+}
 }
