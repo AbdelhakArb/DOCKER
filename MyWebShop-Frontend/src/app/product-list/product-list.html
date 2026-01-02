@@ -8,8 +8,9 @@
         <thead class="table-light">
           <tr>
             <th>ID</th>
-            <th>Désignation</th>ng s
+            <th>Désignation</th>
             <th class="text-end">Prix Unitaire</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +19,11 @@
               <td><span class="badge bg-secondary">{{ p.id }}</span></td>
               <td><strong>{{ p.name }}</strong></td>
               <td class="text-end text-success fw-bold">{{ p.price }} €</td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="addToCart(p)">
+                  <i class="bi bi-plus"></i> Ajouter
+                </button>
+              </td>
             </tr>
           }
         </tbody>

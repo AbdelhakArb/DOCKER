@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OdooService } from '../odoo';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +14,10 @@ export class ProductListComponent implements OnInit {
   // Si tu as écrit : products: any[] = []; -> C'est ça l'erreur !
   products = signal<any[]>([]); 
 
-  constructor(private odooService: OdooService) {}
+  constructor(
+    private odooService: OdooService,
+    private cartService: CartService 
+  ) {}
 
   ngOnInit(): void {
     this.odooService.getProducts().subscribe({
@@ -24,4 +28,9 @@ export class ProductListComponent implements OnInit {
       error: (err) => console.error('Erreur API :', err)
     });
   }
+
+addToCart(product: any) {
+  this.cartService.addToCart(product);
+}
+  
 }

@@ -13,4 +13,12 @@ export class OdooService {
   getProducts(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  createOrder(orderData: any): Observable<any> {
+  return this.http.post('http://localhost:5030/api/Orders', orderData);
+}
+
+getOrderStatus(id: string) {
+  return this.http.get(`http://localhost:5030/api/Orders/${id}`);
+}
 }

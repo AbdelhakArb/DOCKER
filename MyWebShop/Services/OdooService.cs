@@ -30,6 +30,7 @@ namespace MyWebShop.Services
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"ERREUR ODOO DETECTEE : {ex.Message}");
                 throw new Exception($"Erreur de connexion Odoo : {ex.Message}");
             }
         }
@@ -58,6 +59,57 @@ namespace MyWebShop.Services
         };
     }).ToList();
 }
+        public int CreateOrder(OrderRequest order)
+{
+    var rpcClient = XmlRpcProxyGen.Create<IOdooProxy>();
+    rpcClient.Url = _url + "object";
+
+    try
+    {
+        // 1. Création de l'entête (Utilisation de XmlRpcStruct au lieu de Dictionary)
+        var orderData = new XmlRpcStruct();
+        orderData.Add("partner_id", order.PartnerId);
+        orderData.Add("date_order", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+        Console.WriteLine($"Tentative Odoo pour Partner ID: {order.PartnerId}");
+
+        int orderId = (int)rpcClient.execute_kw(_db, _uid, _pass, "sale.order", "create", new object[] { orderData });
+
+        // 2. Création des lignes
+        foreach (var item in order.Items)
+        {
+            var lineData = new XmlRpcStruct();
+            lineData.Add("order_id", orderId);
+            lineData.Add("product_id", item.ProductId);
+            lineData.Add("product_uom_qty", (double)item.Quantity);
+            
+            rpcClient.execute_kw(_db, _uid, _pass, "sale.order.line", "create", new object[] { lineData });
+        }
+
+        Console.WriteLine($"Succès ! Commande Odoo ID: {orderId}");
+        return orderId;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("--- ERREUR ODOO ---");
+        Console.WriteLine(ex.Message);
+        throw;
+    }
+}
+
+public object? GetOrderStatus(int orderId)
+{
+    var rpcClient = XmlRpcProxyGen.Create<IOdooProxy>();
+    rpcClient.Url = _url + "object";
+
+    var fields = new string[] { "id", "name", "state", "amount_total", "date_order" };
+    
+    var result = (object[])rpcClient.execute_kw(_db, _uid, _pass, "sale.order", "read", 
+        new object[] { new int[] { orderId } }, 
+        new { fields = fields });
+
+    return result.Length > 0 ? result[0] : null;
+}
         public int CreateProduct(Product product)
         {
             var rpcClient = XmlRpcProxyGen.Create<IOdooProxy>();
@@ -78,4 +130,6 @@ namespace MyWebShop.Services
             return newId;
         }
     }
+    
 }
+
