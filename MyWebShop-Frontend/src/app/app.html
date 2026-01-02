@@ -1,1 +1,32 @@
-<app-product-list></app-product-list>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/shop">My Odoo Shop</a>
+    
+    <div class="d-flex gap-2">
+      
+      <a routerLink="/shop" 
+         routerLinkActive="btn-primary active" 
+         class="btn btn-outline-primary text-white">
+         Boutique
+      </a>
+
+      <a routerLink="/track" 
+         routerLinkActive="btn-primary active" 
+         class="btn btn-outline-primary text-white">
+         Suivre ma commande
+      </a>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-4">
+      <app-cart></app-cart>
+    </div>
+  </div>
+</div>

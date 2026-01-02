@@ -1,0 +1,20 @@
+<div class="card shadow mt-4" *ngIf="cartService.items().length > 0">
+  <div class="card-header bg-dark text-white"> Mon Panier </div>
+  <div class="card-body">
+    <ul class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-between" *ngFor="let item of cartService.items()">
+        {{ item.product.name }} (x{{ item.quantity }})
+        <span>{{ item.product.price * item.quantity }} €</span>
+      </li>
+    </ul>
+    
+    <div class="d-flex justify-content-between fw-bold mb-3">
+      <span>Total :</span>
+      <span>{{ cartService.getTotal() }} €</span>
+    </div>
+
+    <button class="btn btn-success w-100" (click)="confirmOrder()">
+      <i class="bi bi-check-circle"></i> Confirmer la commande Odoo
+    </button>
+  </div>
+</div>

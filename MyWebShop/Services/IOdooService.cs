@@ -7,6 +7,7 @@ namespace MyWebShop.Services
     {
        
         List<Product> GetProducts(); 
-        int CreateProduct(Product product);
+        int CreateOrder(OrderRequest order);
+        object GetOrderStatus(int orderId);
     }
 }

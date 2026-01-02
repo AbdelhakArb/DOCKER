@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc; // C'est celui-ci qui contient ControllerBase
-using CookComputing.XmlRpc;      // Pour Odoo
-using MyWebShop.Models;// Remplace par le nom de ton dossier Models
+using Microsoft.AspNetCore.Mvc; 
+using CookComputing.XmlRpc;
+using MyWebShop.Models;
 using MyWebShop.Services;
 using System.Collections.Generic;
 
@@ -19,10 +19,4 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public IActionResult Get() => Ok(_odooService.GetProducts());
 
-    [HttpPost]
-public IActionResult Post([FromBody] Product product) // On l'appelle 'product'
-{
-    var id = _odooService.CreateProduct(product); // On utilise 'product'
-    return Ok(new { id = id, message = "Produit créé !" });
-}
 }
