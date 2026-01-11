@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "script_import_odoo/1.0.0": {
+        "dependencies": {
+          "Kveer.XmlRPC": "1.1.1"
+        },
+        "runtime": {
+          "script_import_odoo.dll": {}
+        }
+      },
+      "Kveer.XmlRPC/1.1.1": {
+        "runtime": {
+          "lib/netstandard2.0/Kveer.XmlRPC.dll": {
+            "assemblyVersion": "1.1.1.0",
+            "fileVersion": "1.1.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "script_import_odoo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Kveer.XmlRPC/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0/KwvIiXdMVDkU/DPc71JHkNOjhEa+aHtz94X1KrOXz8HMaO+5Rrq58Gbh68rR/KOWIaiUzPDRapR33IUJeL7Q==",
+      "path": "kveer.xmlrpc/1.1.1",
+      "hashPath": "kveer.xmlrpc.1.1.1.nupkg.sha512"
+    }
+  }
+}

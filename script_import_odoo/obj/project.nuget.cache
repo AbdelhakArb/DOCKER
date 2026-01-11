@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fwyRVRHNRGs=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cash\\Desktop\\Dev\\docker\\script_import_odoo\\script_import_odoo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cash\\.nuget\\packages\\kveer.xmlrpc\\1.1.1\\kveer.xmlrpc.1.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}
