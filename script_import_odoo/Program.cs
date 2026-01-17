@@ -53,11 +53,11 @@ class Program {
                     }, new { });
 
                     UpdateStock(proxy, uid, variantId, stockQty);
-                    Console.WriteLine($"📦 {name} ({attrVal}) traité avec succès.");
+                    Console.WriteLine($"{name} ({attrVal}) traité avec succès.");
                 }
             }
-            Console.WriteLine("\n🚀 Importation terminée !");
-        } catch (Exception ex) { Console.WriteLine($"💥 Erreur : {ex.Message}"); }
+            Console.WriteLine("\nImportation terminée !");
+        } catch (Exception ex) { Console.WriteLine($"Erreur : {ex.Message}"); }
     }
 
     static void UpdateStock(IOdooProxy proxy, int uid, int variantId, double qty) {
@@ -76,9 +76,9 @@ class Program {
             // On ignore cette erreur car c'est juste Odoo qui renvoie une réponse vide après succès
         }
         
-        Console.WriteLine($"   📦 Stock mis à jour : {qty}");
+        Console.WriteLine($"Stock mis à jour : {qty}");
     } catch (Exception ex) {
-        Console.WriteLine($"   ⚠️ Erreur réelle sur le stock : {ex.Message}");
+        Console.WriteLine($"Erreur réelle sur le stock : {ex.Message}");
     }
 }
 
