@@ -1,0 +1,34 @@
+product_name;price;cost;variant_attribute;variant_value;quantity
+Sac à Main;89.00;35.00;Matériau;Cuir;28
+Sac à Main;89.00;35.00;Matériau;Synthétique;35
+Sac à Main;89.00;35.00;Matériau;Toile;30
+Ceinture Classique;32.00;12.00;Matériau;Cuir;45
+Ceinture Classique;32.00;12.00;Matériau;Synthétique;38
+Ceinture Classique;32.00;12.00;Matériau;Tissu;25
+Portefeuille;45.00;18.00;Matériau;Cuir;50
+Portefeuille;45.00;18.00;Matériau;Synthétique;42
+Portefeuille;45.00;18.00;Matériau;Textile;30
+Écharpe Mode;28.00;11.00;Matériau;Laine;35
+Écharpe Mode;28.00;11.00;Matériau;Cachemire;22
+Écharpe Mode;28.00;11.00;Matériau;Coton;40
+Écharpe Mode;28.00;11.00;Matériau;Acrylique;45
+Gants Hiver;22.00;9.00;Matériau;Laine;38
+Gants Hiver;22.00;9.00;Matériau;Cuir;28
+Gants Hiver;22.00;9.00;Matériau;Polaire;42
+Bonnet Tricoté;18.00;7.00;Matériau;Laine;48
+Bonnet Tricoté;18.00;7.00;Matériau;Coton;40
+Bonnet Tricoté;18.00;7.00;Matériau;Acrylique;52
+Sac à Dos;65.00;28.00;Matériau;Nylon;35
+Sac à Dos;65.00;28.00;Matériau;Polyester;40
+Sac à Dos;65.00;28.00;Matériau;Toile;30
+Sac à Dos;65.00;28.00;Matériau;Cuir;20
+Lunettes de Soleil;55.00;22.00;Matériau;Plastique;55
+Lunettes de Soleil;55.00;22.00;Matériau;Métal;42
+Lunettes de Soleil;55.00;22.00;Matériau;Titane;28
+Montre Analogique;125.00;55.00;Matériau;Acier;32
+Montre Analogique;125.00;55.00;Matériau;Cuir;28
+Montre Analogique;125.00;55.00;Matériau;Silicone;35
+Bracelet Fantaisie;15.00;6.00;Matériau;Argent;45
+Bracelet Fantaisie;15.00;6.00;Matériau;Or;30
+Bracelet Fantaisie;15.00;6.00;Matériau;Acier;50
+Bracelet Fantaisie;15.00;6.00;Matériau;Cuir;38

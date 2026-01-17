@@ -1,0 +1,38 @@
+product_name;price;cost;variant_attribute;variant_value;quantity
+Haltère Fitness;35.00;14.00;Poids;2kg;50
+Haltère Fitness;35.00;14.00;Poids;5kg;45
+Haltère Fitness;45.00;18.00;Poids;8kg;38
+Haltère Fitness;55.00;22.00;Poids;10kg;32
+Haltère Fitness;65.00;26.00;Poids;12kg;28
+Kettlebell Sport;42.00;17.00;Poids;4kg;40
+Kettlebell Sport;48.00;19.00;Poids;8kg;35
+Kettlebell Sport;58.00;23.00;Poids;12kg;28
+Kettlebell Sport;68.00;27.00;Poids;16kg;22
+Kettlebell Sport;78.00;31.00;Poids;20kg;18
+Médecine Ball;38.00;15.00;Poids;3kg;35
+Médecine Ball;45.00;18.00;Poids;5kg;32
+Médecine Ball;52.00;21.00;Poids;7kg;28
+Médecine Ball;62.00;25.00;Poids;10kg;22
+Barre de Musculation;89.00;35.00;Poids;10kg;25
+Barre de Musculation;115.00;48.00;Poids;15kg;20
+Barre de Musculation;145.00;60.00;Poids;20kg;15
+Gilet Lesté;78.00;32.00;Poids;5kg;28
+Gilet Lesté;95.00;40.00;Poids;10kg;22
+Gilet Lesté;125.00;52.00;Poids;15kg;18
+Gilet Lesté;155.00;65.00;Poids;20kg;12
+Ballon Yoga;25.00;10.00;Poids;55cm;45
+Ballon Yoga;28.00;11.00;Poids;65cm;50
+Ballon Yoga;32.00;13.00;Poids;75cm;42
+Corde à Sauter;12.00;5.00;Poids;Standard;80
+Corde à Sauter;18.00;7.00;Poids;Lestée;55
+Élastique Résistance;15.00;6.00;Poids;Léger;65
+Élastique Résistance;18.00;7.00;Poids;Moyen;58
+Élastique Résistance;22.00;9.00;Poids;Fort;48
+Élastique Résistance;28.00;11.00;Poids;ExtraFort;35
+Sac de Frappe;125.00;52.00;Poids;20kg;18
+Sac de Frappe;165.00;68.00;Poids;30kg;15
+Sac de Frappe;205.00;85.00;Poids;40kg;12
+Sac de Frappe;245.00;102.00;Poids;50kg;8
+Tapis de Course;899.00;380.00;Poids;80kg;8
+Tapis de Course;1199.00;510.00;Poids;100kg;6
+Tapis de Course;1499.00;640.00;Poids;120kg;5

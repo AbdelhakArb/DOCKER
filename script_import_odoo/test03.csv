@@ -1,0 +1,54 @@
+product_name;price;cost;variant_attribute;variant_value;quantity
+Basket Running;89.00;35.00;Pointure;38;22
+Basket Running;89.00;35.00;Pointure;39;28
+Basket Running;89.00;35.00;Pointure;40;32
+Basket Running;89.00;35.00;Pointure;41;35
+Basket Running;89.00;35.00;Pointure;42;30
+Basket Running;89.00;35.00;Pointure;43;25
+Basket Running;89.00;35.00;Pointure;44;20
+Bottes Cuir;125.00;55.00;Pointure;37;15
+Bottes Cuir;125.00;55.00;Pointure;38;20
+Bottes Cuir;125.00;55.00;Pointure;39;22
+Bottes Cuir;125.00;55.00;Pointure;40;18
+Bottes Cuir;125.00;55.00;Pointure;41;16
+Sandales Été;35.00;14.00;Pointure;36;25
+Sandales Été;35.00;14.00;Pointure;37;28
+Sandales Été;35.00;14.00;Pointure;38;30
+Sandales Été;35.00;14.00;Pointure;39;26
+Sandales Été;35.00;14.00;Pointure;40;22
+Escarpins Élégants;79.00;32.00;Pointure;36;18
+Escarpins Élégants;79.00;32.00;Pointure;37;22
+Escarpins Élégants;79.00;32.00;Pointure;38;25
+Escarpins Élégants;79.00;32.00;Pointure;39;20
+Escarpins Élégants;79.00;32.00;Pointure;40;15
+Chaussures de Ville;95.00;40.00;Pointure;40;20
+Chaussures de Ville;95.00;40.00;Pointure;41;25
+Chaussures de Ville;95.00;40.00;Pointure;42;28
+Chaussures de Ville;95.00;40.00;Pointure;43;22
+Chaussures de Ville;95.00;40.00;Pointure;44;18
+Chaussons Confort;25.00;10.00;Pointure;38;30
+Chaussons Confort;25.00;10.00;Pointure;39;32
+Chaussons Confort;25.00;10.00;Pointure;40;35
+Chaussons Confort;25.00;10.00;Pointure;41;28
+Chaussons Confort;25.00;10.00;Pointure;42;25
+Mocassins Décontractés;65.00;28.00;Pointure;39;24
+Mocassins Décontractés;65.00;28.00;Pointure;40;28
+Mocassins Décontractés;65.00;28.00;Pointure;41;26
+Mocassins Décontractés;65.00;28.00;Pointure;42;22
+Mocassins Décontractés;65.00;28.00;Pointure;43;18
+Bottines Chelsea;110.00;48.00;Pointure;40;16
+Bottines Chelsea;110.00;48.00;Pointure;41;20
+Bottines Chelsea;110.00;48.00;Pointure;42;22
+Bottines Chelsea;110.00;48.00;Pointure;43;18
+Bottines Chelsea;110.00;48.00;Pointure;44;14
+Sneakers Casual;72.00;30.00;Pointure;38;26
+Sneakers Casual;72.00;30.00;Pointure;39;30
+Sneakers Casual;72.00;30.00;Pointure;40;32
+Sneakers Casual;72.00;30.00;Pointure;41;28
+Sneakers Casual;72.00;30.00;Pointure;42;24
+Sneakers Casual;72.00;30.00;Pointure;43;20
+Tongs Plage;18.00;7.00;Pointure;37;35
+Tongs Plage;18.00;7.00;Pointure;38;40
+Tongs Plage;18.00;7.00;Pointure;39;42
+Tongs Plage;18.00;7.00;Pointure;40;38
+Tongs Plage;18.00;7.00;Pointure;41;32

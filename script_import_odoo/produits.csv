@@ -1,9 +1,9 @@
-product_name,price,cost,variant_attribute,variant_value,quantity
-Ecran 4K,450,300,Taille,27 pouces,20
-Ecran 4K,600,400,Taille,32 pouces,14
-T-Shirt,25.00,10.00,Couleur,Rouge,50
-T-Shirt,25.00,10.00,Couleur,Bleu,30
-T-Shirt,25.00,10.00,Taille,M,40
-T-Shirt,25.00,10.00,Taille,L,35
-Pantalon,45.00,20.00,Taille,32,20
-Pantalon,45.00,20.00,Taille,34,25
+product_name;price;cost;variant_attribute;variant_value;quantity
+Ecran 4K;450;300;Taille;27 pouces;20
+Ecran 4K;600;400;Taille;32 pouces;14
+T-Shirt;25.00;10.00;Couleur;Rouge;50
+T-Shirt;25.00;10.00;Couleur;Bleu;30
+T-Shirt;25.00;10.00;Taille;M;40
+T-Shirt;25.00;10.00;Taille;L;35
+Pantalon;45.00;20.00;Taille;32;20
+Pantalon;45.00;20.00;Taille;34;25

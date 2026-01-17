@@ -42,6 +42,7 @@ const int MY_LOCATION_ID = 8; // ID de l'emplacement interne (Stock)
 ## Comment ca marche ?
 
 * Lancez Odoo
+* Placer votre fichier.csv dans le repo script_import_odoo
 * dans un terminal, allez a la racine du repo script_import_odoo
 * Executer la commande ´dotnet run´
 
