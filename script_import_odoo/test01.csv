@@ -1,0 +1,41 @@
+product_name;price;cost;variant_attribute;variant_value;quantity
+Chemise Business;45.00;18.00;Taille;S;25
+Chemise Business;45.00;18.00;Taille;M;40
+Chemise Business;45.00;18.00;Taille;L;35
+Chemise Business;45.00;18.00;Taille;XL;20
+Pull Col Roulé;55.00;22.00;Taille;S;15
+Pull Col Roulé;55.00;22.00;Taille;M;30
+Pull Col Roulé;55.00;22.00;Taille;L;25
+Pull Col Roulé;55.00;22.00;Taille;XL;12
+Veste en Jean;75.00;30.00;Taille;S;18
+Veste en Jean;75.00;30.00;Taille;M;28
+Veste en Jean;75.00;30.00;Taille;L;22
+Veste en Jean;75.00;30.00;Taille;XL;15
+Short Cargo;38.00;15.00;Taille;S;20
+Short Cargo;38.00;15.00;Taille;M;35
+Short Cargo;38.00;15.00;Taille;L;30
+Short Cargo;38.00;15.00;Taille;XL;18
+Jupe Plissée;42.00;17.00;Taille;XS;22
+Jupe Plissée;42.00;17.00;Taille;S;28
+Jupe Plissée;42.00;17.00;Taille;M;25
+Jupe Plissée;42.00;17.00;Taille;L;15
+Robe d'Été;65.00;26.00;Taille;XS;12
+Robe d'Été;65.00;26.00;Taille;S;20
+Robe d'Été;65.00;26.00;Taille;M;18
+Robe d'Été;65.00;26.00;Taille;L;10
+Sweat à Capuche;48.00;19.00;Taille;S;30
+Sweat à Capuche;48.00;19.00;Taille;M;45
+Sweat à Capuche;48.00;19.00;Taille;L;38
+Sweat à Capuche;48.00;19.00;Taille;XL;25
+Polo Sport;35.00;14.00;Taille;S;28
+Polo Sport;35.00;14.00;Taille;M;42
+Polo Sport;35.00;14.00;Taille;L;35
+Polo Sport;35.00;14.00;Taille;XL;20
+Pantalon Chino;52.00;21.00;Taille;30;15
+Pantalon Chino;52.00;21.00;Taille;32;25
+Pantalon Chino;52.00;21.00;Taille;34;22
+Pantalon Chino;52.00;21.00;Taille;36;18
+Blouson Cuir;185.00;75.00;Taille;M;8
+Blouson Cuir;185.00;75.00;Taille;L;12
+Blouson Cuir;185.00;75.00;Taille;XL;10
+Blouson Cuir;185.00;75.00;Taille;XXL;6

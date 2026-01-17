@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("script_import_odoo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9d9c47028571b668a2d90914331c657165845c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+020a4c03c15c7f44b252a5e61f0d60a9e9087b6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("script_import_odoo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("script_import_odoo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

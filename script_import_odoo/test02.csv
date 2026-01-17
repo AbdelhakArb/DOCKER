@@ -1,0 +1,33 @@
+product_name;price;cost;variant_attribute;variant_value;quantity
+Smartphone Pro;899.00;450.00;Couleur;Noir;45
+Smartphone Pro;899.00;450.00;Couleur;Blanc;38
+Smartphone Pro;899.00;450.00;Couleur;Bleu;32
+Smartphone Pro;899.00;450.00;Couleur;Rouge;25
+Casque Audio;129.00;55.00;Couleur;Noir;60
+Casque Audio;129.00;55.00;Couleur;Blanc;45
+Casque Audio;129.00;55.00;Couleur;Argent;35
+Tablette 10 pouces;449.00;220.00;Couleur;Gris;28
+Tablette 10 pouces;449.00;220.00;Couleur;Or;22
+Tablette 10 pouces;449.00;220.00;Couleur;Argent;30
+Montre Connectée;249.00;110.00;Couleur;Noir;50
+Montre Connectée;249.00;110.00;Couleur;Blanc;40
+Montre Connectée;249.00;110.00;Couleur;Rose;35
+Enceinte Bluetooth;79.00;32.00;Couleur;Noir;55
+Enceinte Bluetooth;79.00;32.00;Couleur;Bleu;42
+Enceinte Bluetooth;79.00;32.00;Couleur;Rouge;38
+Enceinte Bluetooth;79.00;32.00;Couleur;Vert;30
+Clavier Mécanique;149.00;65.00;Couleur;Noir;35
+Clavier Mécanique;149.00;65.00;Couleur;Blanc;28
+Clavier Mécanique;149.00;65.00;Couleur;RGB;42
+Souris Gaming;69.00;28.00;Couleur;Noir;48
+Souris Gaming;69.00;28.00;Couleur;Blanc;32
+Souris Gaming;69.00;28.00;Couleur;Gris;25
+Webcam HD;89.00;38.00;Couleur;Noir;40
+Webcam HD;89.00;38.00;Couleur;Blanc;30
+Powerbank 20000mAh;45.00;18.00;Couleur;Noir;65
+Powerbank 20000mAh;45.00;18.00;Couleur;Blanc;50
+Powerbank 20000mAh;45.00;18.00;Couleur;Bleu;42
+Écouteurs Sans Fil;119.00;50.00;Couleur;Noir;55
+Écouteurs Sans Fil;119.00;50.00;Couleur;Blanc;48
+Écouteurs Sans Fil;119.00;50.00;Couleur;Bleu;35
+Écouteurs Sans Fil;119.00;50.00;Couleur;Rose;30

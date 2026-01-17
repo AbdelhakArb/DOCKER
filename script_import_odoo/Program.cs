@@ -24,78 +24,147 @@ class Program {
 
         try {
             int uid = Authenticate();
-            var lines = File.ReadAllLines("produits.csv").Skip(1);
+            Console.WriteLine($"Connecté (UID: {uid})");
+
+            var lines = File.ReadAllLines("test03.csv").Skip(1);
 
             foreach (var line in lines) {
-                if (string.IsNullOrWhiteSpace(line)) continue;
-                var data = line.Split(',');
-                string name = data[0].Trim();
-                double price = double.Parse(data[1], CultureInfo.InvariantCulture);
-                double cost = double.Parse(data[2], CultureInfo.InvariantCulture);
-                string attrName = data[3].Trim();
-                string attrVal = data[4].Trim();
-                double stockQty = data.Length >= 6 ? double.Parse(data[5], CultureInfo.InvariantCulture) : 0.0;
+                try {
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+                    var data = line.Split(';');
+                    if (data.Length < 5) continue;
 
-                int attrId = GetOrCreate(proxy, uid, "product.attribute", attrName);
-                int valId = GetOrCreate(proxy, uid, "product.attribute.value", attrVal, attrId);
+                    string name = data[0].Trim();
+                    double price = double.Parse(data[1], CultureInfo.InvariantCulture);
+                    double cost = double.Parse(data[2], CultureInfo.InvariantCulture);
+                    string attrName = data[3].Trim();
+                    string attrVal = data[4].Trim();
+                    double stockQty = data.Length >= 6 ? double.Parse(data[5], CultureInfo.InvariantCulture) : 0.0;
 
-                int templateId = GetProductTemplateByName(proxy, uid, name);
-                if (templateId == 0) {
-                    templateId = CreateProductTemplate(proxy, uid, name, price, cost);
-                }
+                    int attrId = GetOrCreate(proxy, uid, "product.attribute", attrName);
+                    int valId = GetOrCreate(proxy, uid, "product.attribute.value", attrVal, attrId);
 
-                LinkAttributeToTemplate(proxy, uid, templateId, attrId, valId);
+                    // 1. Recherche ou Création du Template
+                    int templateId = GetProductTemplateByName(proxy, uid, name);
+                    if (templateId == 0) {
+                        templateId = CreateProductTemplate(proxy, uid, name, price, cost);
+                    } else {
+                        // On essaie de forcer le type à 'consu' pour les existants
+                        try {
+                            proxy.execute_kw(DB, uid, PASS, "product.template", "write", 
+                                new object[] { new int[] { templateId }, new { type = "consu" } }, new { });
+                        } catch { /* Ignore si Odoo refuse le changement de type */ }
+                    }
 
-                int variantId = GetVariantId(proxy, uid, templateId, valId);
-                if (variantId > 0) {
-                    proxy.execute_kw(DB, uid, PASS, "product.product", "write", new object[] {
-                        new int[] { variantId }, new { lst_price = price, standard_price = cost }
-                    }, new { });
+                    // 2. Liaison Attributs
+                    LinkAttributeToTemplate(proxy, uid, templateId, attrId, valId);
 
-                    UpdateStock(proxy, uid, variantId, stockQty);
-                    Console.WriteLine($"{name} ({attrVal}) traité avec succès.");
+                    // 3. Récupération Variante
+                    int variantId = GetVariantId(proxy, uid, templateId, valId);
+
+                    if (variantId > 0) {
+                        // Mise à jour prix
+                        proxy.execute_kw(DB, uid, PASS, "product.product", "write", 
+                            new object[] { new int[] { variantId }, new { lst_price = price, standard_price = cost } }, new { });
+
+                        // 4. Mise à jour Stock
+                        UpdateStock(proxy, uid, variantId, stockQty);
+                        Console.WriteLine($" {name} ({attrVal}) traité.");
+                    }
+                } catch (Exception ex) {
+                    Console.WriteLine($"Erreur sur la ligne [{line}] : {ex.Message}");
                 }
             }
-            Console.WriteLine("\nImportation terminée !");
-        } catch (Exception ex) { Console.WriteLine($"Erreur : {ex.Message}"); }
+            Console.WriteLine("\nTerminé !");
+        } catch (Exception ex) { Console.WriteLine($"💥 Erreur critique : {ex.Message}"); }
     }
-
-    static void UpdateStock(IOdooProxy proxy, int uid, int variantId, double qty) {
-    try {
-        // 1. Création de la ligne de stock
-        int quantId = Convert.ToInt32(proxy.execute_kw(DB, uid, PASS, "stock.quant", "create", new object[] {
-            new { product_id = variantId, location_id = MY_LOCATION_ID, inventory_quantity = qty }
-        }, new { }));
-
-        // 2. Validation de l'inventaire
-        try {
-            proxy.execute_kw(DB, uid, PASS, "stock.quant", "action_apply_inventory", new object[] { 
-                new int[] { quantId } 
-            }, new { });
-        } catch (Exception ex) when (ex.Message.Contains("marshal None")) {
-            // On ignore cette erreur car c'est juste Odoo qui renvoie une réponse vide après succès
-        }
-        
-        Console.WriteLine($"Stock mis à jour : {qty}");
-    } catch (Exception ex) {
-        Console.WriteLine($"Erreur réelle sur le stock : {ex.Message}");
-    }
-}
 
     static int CreateProductTemplate(IOdooProxy proxy, int uid, string name, double price, double cost) {
-        string[] types = { "storable", "consu", "product" };
-        foreach (var t in types) {
-            try {
-                return Convert.ToInt32(proxy.execute_kw(DB, uid, PASS, "product.template", "create", new object[] {
-                    new { name = name, list_price = price, standard_price = cost, type = t }
-                }, new { }));
-            } catch { continue; }
-        }
+    try {
+        return Convert.ToInt32(proxy.execute_kw(DB, uid, PASS, "product.template", "create", new object[] {
+            new { 
+                name = name, 
+                list_price = price, 
+                standard_price = cost, 
+                is_storable = true, //  cette ligne qui coche "Track Inventory"
+                type = "consu"      // On garde consu par sécurité
+            }
+        }, new { }));
+    } catch {
+        // Si is_storable n'existe pas dans ta version d'Odoo, on crée normalement
         return Convert.ToInt32(proxy.execute_kw(DB, uid, PASS, "product.template", "create", new object[] {
             new { name = name, list_price = price, standard_price = cost }
         }, new { }));
     }
+}
 
+    static void UpdateStock(IOdooProxy proxy, int uid, int variantId, double qty) {
+    try {
+        // 1. On s'assure que le suivi de stock est activé
+        proxy.execute_kw(DB, uid, PASS, "product.product", "write", new object[] {
+            new int[] { variantId }, new { is_storable = true }
+        }, new { });
+
+        // 2. Création ou mise à jour du Quant
+        var quantIdObj = proxy.execute_kw(DB, uid, PASS, "stock.quant", "create", new object[] {
+            new {
+                product_id = variantId,
+                location_id = MY_LOCATION_ID,
+                inventory_quantity = qty
+            }
+        }, new { });
+
+        int quantId = Convert.ToInt32(quantIdObj);
+
+        // 3. Validation de l'inventaire
+        try {
+            proxy.execute_kw(DB, uid, PASS, "stock.quant", "action_apply_inventory", new object[] { 
+                new int[] { quantId } 
+            }, new { });
+            Console.WriteLine($"Stock mis à jour : {qty}");
+        } 
+        catch (Exception ex) when (ex.Message.Contains("cannot marshal None") || ex.Message.Contains("allow_none")) {
+            // C'est l'erreur fantôme d'Odoo : l'action a réussi mais renvoie None.
+            // On considère cela comme un SUCCÈS.
+            Console.WriteLine($"Stock mis à jour : {qty} (Validation confirmée)");
+        }
+    } 
+    catch (Exception ex) {
+        // Ici, on gère les vraies erreurs (ex: déjà un stock existant)
+        Console.WriteLine($"Note : Ajustement via écriture directe...");
+        HandleExistingQuant(proxy, uid, variantId, qty);
+    }
+}
+
+static void HandleExistingQuant(IOdooProxy proxy, int uid, int variantId, double qty) {
+    try {
+        var searchQuant = proxy.execute_kw(DB, uid, PASS, "stock.quant", "search", new object[] {
+            new object[] { 
+                new object[] { "product_id", "=", variantId },
+                new object[] { "location_id", "=", MY_LOCATION_ID }
+            }
+        }, new { });
+
+        int[] quantIds = SafeConvertToIntArray(searchQuant);
+        if (quantIds.Length > 0) {
+            proxy.execute_kw(DB, uid, PASS, "stock.quant", "write", new object[] {
+                new int[] { quantIds[0] }, new { inventory_quantity = qty }
+            }, new { });
+
+            try {
+                proxy.execute_kw(DB, uid, PASS, "stock.quant", "action_apply_inventory", new object[] { 
+                    new int[] { quantIds[0] } 
+                }, new { });
+            } catch { /* Ignorer l'erreur marshal None ici aussi */ }
+            
+            Console.WriteLine($"Stock actualisé à {qty}");
+        }
+    } catch (Exception fatal) {
+        Console.WriteLine($"Erreur réelle : {fatal.Message}");
+    }
+}
+
+    // --- Méthodes Techniques (Inchangées mais incluses pour que le code compile) ---
     static void LinkAttributeToTemplate(IOdooProxy proxy, int uid, int templateId, int attrId, int valId) {
         var res = proxy.execute_kw(DB, uid, PASS, "product.template.attribute.line", "search", new object[] {
             new object[] { new object[] { "product_tmpl_id", "=", templateId }, new object[] { "attribute_id", "=", attrId } }
